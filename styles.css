@@ -10,6 +10,9 @@
   ---in-progress-bg: #daf1fa;
   ---in-progress-clr: #064763;
 
+  ---completed-bg: #dafae1;
+  ---completed-clr: #066325;
+
   ---todo-desc-clr: rgb(54, 54, 54);
   ---border-clr: rgb(190, 190, 190);
 
@@ -72,7 +75,7 @@ time {
 /* TODO META */
 .priority,
 .todo-meta {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .priority {
@@ -216,4 +219,15 @@ time {
 
 .delete-todo:active {
   background-color: var(---delete-btn-bg-active);
+}
+
+/* DYNAMIC STYLES */
+.completed-title-style {
+  text-decoration: line-through;
+  color: var(---border-clr);
+}
+
+.completed-status {
+  background-color: var(---completed-bg);
+  color: var(---completed-clr);
 }
