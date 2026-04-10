@@ -158,8 +158,13 @@ time {
 /* TODO FOOTER */
 .todo-footer {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  gap: 0.5rem;
+}
+
+.todo-footer > *:first-child {
+  margin-block-end: 0.5rem;
 }
 
 .todo-footer input {
@@ -179,6 +184,8 @@ time {
 }
 
 .buttons > * {
+  flex: 1;
+
   padding: 0.3rem 1.2rem;
   background-color: transparent;
   border: 1px solid var(---border-clr);
