@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="styles.css">
   <title>Todo Card</title>
 </head>
 
@@ -21,10 +22,12 @@
 
       <div class="todo-meta">
         <div class="date-time-status">
-          <time class="due-date" data-testid="test-todo-due-date" datetime="2026-04-16T23:59:00Z">Due April 16,
-            2026
-          </time>
-          <time class="remaining-time" data-testid="test-todo-time-remaining">2 days left</time>
+          <div class="time-status">
+            <time class="due-date" data-testid="test-todo-due-date" datetime="2026-04-16T23:59:00Z">Due April 16,
+              2026
+            </time>
+            <time class="remaining-time" data-testid="test-todo-time-remaining">2 days left</time>
+          </div>
           <span class="todo-status" data-testid="test-todo-status">In Progress</span>
         </div>
 
@@ -42,8 +45,10 @@
           Undone
         </label>
 
-        <button class="edit-todo" data-testid="test-todo-edit-button">Edit</button>
-        <button class="delete-todo" data-testid="test-todo-delete-button">Delete</button>
+        <div class="buttons">
+          <button class="edit-todo" data-testid="test-todo-edit-button">Edit</button>
+          <button class="delete-todo" data-testid="test-todo-delete-button">Delete</button>
+        </div>
 
       </div>
     </article>
