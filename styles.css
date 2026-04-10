@@ -122,6 +122,19 @@ time {
   height: 0.5rem;
   border-radius: 50%;
   background-color: var(---in-progress-clr);
+  animation: pulsate 1s infinite ease-in-out;
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .todo-tags {
