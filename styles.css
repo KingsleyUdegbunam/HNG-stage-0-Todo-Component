@@ -46,6 +46,12 @@ time {
   font-family: var(---seconday-font);
 }
 
+.main-wrapper {
+  height: 100vh;
+  background-color: aliceblue;
+  display: grid;
+}
+
 /* CARD STYLE */
 .todo-card {
   display: flex;
@@ -53,7 +59,7 @@ time {
   width: 100%;
 
   max-width: 500px;
-  height: 100vh;
+  margin: auto;
   padding: 2rem 1rem;
 }
 
@@ -64,6 +70,10 @@ time {
 
 .todo-card > *:last-child {
   border-block-end: none;
+}
+
+.todo-card > *:first-child {
+  padding-block-start: 0;
 }
 
 /* CARD HEADER */
