@@ -24,6 +24,7 @@ export function getDueLabel() {
   if (minuteLeft < 0) {
     const abs = Math.abs(minuteLeft);
     if (abs > 4320) {
+      // overdue by more than 3 days — stop the timer
       timeLeftElem.textContent = "Long overdue";
       return true;
     } else if (abs >= 60) {
