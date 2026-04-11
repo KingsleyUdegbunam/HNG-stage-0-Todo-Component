@@ -48,7 +48,6 @@ export function getDueLabel() {
   } else {
     timeLeftElem.textContent = `${Math.round(minuteLeft / 1440)} days left`;
   }
-  console.log(minuteLeft);
 }
 
 let timerId;
@@ -60,14 +59,12 @@ export function startDueLabelUpdate() {
       clearInterval(timerId);
       timerId = undefined;
     }
-  }, 5000);
-  console.log("timer started");
+  }, 60000);
 }
 
 export function stopDueLabelUpdate() {
   if (timerId !== undefined) {
     clearInterval(timerId);
     timerId = undefined;
-    console.log("timer Cleared");
   }
 }
