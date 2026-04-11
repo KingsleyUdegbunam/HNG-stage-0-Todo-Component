@@ -23,7 +23,10 @@ export function getDueLabel() {
   const minuteLeft = due.diff(today, "minute");
   if (minuteLeft < 0) {
     const abs = Math.abs(minuteLeft);
-    if (abs >= 60) {
+    if (abs > 4320) {
+      timeLeftElem.textContent = "Long overdue";
+      return true;
+    } else if (abs >= 60) {
       const hours = Math.round(abs / 60);
       timeLeftElem.textContent = `Overdue ${hours} hour${hours > 1 ? "s" : ""}`;
     } else {
@@ -44,7 +47,6 @@ export function getDueLabel() {
   } else {
     timeLeftElem.textContent = `${Math.round(minuteLeft / 1440)} days left`;
   }
-
   console.log(minuteLeft);
 }
 
@@ -52,7 +54,12 @@ let timerId;
 export function startDueLabelUpdate() {
   if (timerId !== undefined) return;
 
-  timerId = setInterval(getDueLabel, 5000);
+  timerId = setInterval(() => {
+    if (getDueLabel()) {
+      clearInterval(timerId);
+      timerId = undefined;
+    }
+  }, 5000);
   console.log("timer started");
 }
 
