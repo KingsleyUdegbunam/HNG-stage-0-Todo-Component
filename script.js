@@ -55,6 +55,8 @@ function getDueLabel() {
 
 getDueLabel();
 
+const intervalId = setInterval(getDueLabel, 60000);
+
 function handleTaskCompletion() {
   taskElem.classList.toggle("completed-title-style");
   todoStatusElem.classList.toggle("completed-status");
@@ -73,6 +75,7 @@ function handleButtonClick(e) {
   if (button.classList.contains("edit-todo")) {
     console.log("edit clicked");
   } else if (button.classList.contains("delete-todo")) {
+    clearInterval(intervalId);
     alert("Delete clicked");
   }
 }
