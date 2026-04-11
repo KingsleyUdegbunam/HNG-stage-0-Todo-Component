@@ -10,15 +10,16 @@ export function handleTaskCompletion() {
   todoStatusElem.classList.toggle("completed-status");
   todoStatusElem.classList.toggle("stop-animation");
 
+  dueLabelElem.classList.toggle("end-timer");
+
   const isCompleted = inputElem.checked;
   if (isCompleted) {
+    todoStatusElem.textContent = "Done";
     stopDueLabelUpdate();
-    dueLabelElem.classList.add("end-timer");
   } else {
+    todoStatusElem.textContent = "In Progress";
     startDueLabelUpdate();
-    dueLabelElem.classList.remove("end-timer");
   }
-  todoStatusElem.textContent = inputElem.checked ? "Done" : "In Progress";
 }
 
 export function handleButtonClick(e) {
