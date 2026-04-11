@@ -260,6 +260,15 @@ time {
   opacity: 0;
 }
 
+.todo-status.stop-animation::before {
+  content: " ";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(---completed-clr);
+  animation: none;
+}
+
 /* MEDIA QUERIES */
 @media screen and (min-width: 480px) {
   .todo-title {

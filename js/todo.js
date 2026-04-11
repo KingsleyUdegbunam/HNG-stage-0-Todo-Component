@@ -8,6 +8,7 @@ const dueLabelElem = document.querySelector(".remaining-time");
 export function handleTaskCompletion() {
   taskElem.classList.toggle("completed-title-style");
   todoStatusElem.classList.toggle("completed-status");
+  todoStatusElem.classList.toggle("stop-animation");
 
   const isCompleted = inputElem.checked;
   if (isCompleted) {
