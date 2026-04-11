@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <section class="main-wrapper">
+  <div class="main-wrapper">
     <article class="todo-card" data-testid="test-todo-card">
       <div class="todo-header">
         <span class="priority" data-testid="test-todo-priority">Medium</span>
@@ -26,7 +26,7 @@
             <time class="due-date" data-testid="test-todo-due-date" datetime="2026-04-16T23:59:00Z">Due April 16,
               2026
             </time>
-            <time class="remaining-time" data-testid="test-todo-time-remaining">2 days left</time>
+            <time aria-live="polite" class="remaining-time" data-testid="test-todo-time-remaining">2 days left</time>
           </div>
           <span class="todo-status" data-testid="test-todo-status">In Progress</span>
         </div>
@@ -51,7 +51,7 @@
 
       </div>
     </article>
-  </section>
+  </div>
 
   <script type="module" src="./js/main.js"></script>
 </body>
