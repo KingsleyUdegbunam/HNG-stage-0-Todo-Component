@@ -50,6 +50,8 @@ export function getDueLabel() {
 
 let timerId;
 export function startDueLabelUpdate() {
+  if (timerId !== undefined) return;
+
   timerId = setInterval(getDueLabel, 5000);
   console.log("timer started");
 }
