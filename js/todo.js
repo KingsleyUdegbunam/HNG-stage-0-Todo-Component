@@ -1,4 +1,4 @@
-import { stopDueLabelUpdate } from "./time.js";
+import { startDueLabelUpdate, stopDueLabelUpdate } from "./time.js";
 
 const todoStatusElem = document.querySelector(".todo-status");
 const taskElem = document.querySelector(".todo-title");
@@ -8,6 +8,11 @@ export function handleTaskCompletion() {
   taskElem.classList.toggle("completed-title-style");
   todoStatusElem.classList.toggle("completed-status");
 
+  const isCompleted = inputElem.checked;
+  if (isCompleted) stopDueLabelUpdate();
+  else {
+    startDueLabelUpdate();
+  }
   todoStatusElem.textContent = inputElem.checked ? "Done" : "In Progress";
 }
 
