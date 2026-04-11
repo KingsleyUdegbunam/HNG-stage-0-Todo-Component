@@ -16,7 +16,7 @@ const dueTimeFormatted = dayjs(utcTime).format("MMM DD,YYYY HH:mm");
 const dueTimeHTML = `Due ${dueTimeFormatted}`;
 dueTimeElem.innerHTML = dueTimeHTML;
 
-function getDueLabel() {
+export function getDueLabel() {
   const due = dayjs(utcTime);
 
   const today = dayjs();
@@ -46,4 +46,16 @@ function getDueLabel() {
   }
 
   console.log(minuteLeft);
+}
+
+let timerId;
+export function startDueLabel() {
+  timerId = setInterval(getDueLabel, 60000);
+}
+
+export function stopDueLabel() {
+  if (timerId !== undefined) {
+    clearInterval(timerId);
+    timerId = undefined;
+  }
 }
