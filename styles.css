@@ -300,7 +300,7 @@ time {
   }
 
   .todo-card:hover {
-    transform: translateY(-1.5x);
+    transform: translateY(-1.5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
   }
 }
