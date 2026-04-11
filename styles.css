@@ -22,7 +22,9 @@
   --delete-btn-clr-hover: rgb(255, 255, 255);
   --delete-btn-bg-active: #700000;
 
-  --edit-btn-bg-hover: #dcdcdc;
+  --edit-btn-bg-hover: #232323;
+  --edit-btn-clr-hover: white;
+
   --edit-btn-bg-active: black;
   --edit-btn-clr-active: white;
 }
@@ -207,8 +209,6 @@ time {
   background-color: transparent;
   border: 1px solid var(--border-clr);
   cursor: pointer;
-
-  outline: none;
   border-radius: 0.5rem;
   transition:
     color 250ms ease-in-out,
@@ -234,6 +234,7 @@ time {
 .edit-todo:hover,
 .edit-todo:focus {
   background-color: var(--edit-btn-bg-hover);
+  color: var(--edit-btn-clr-hover);
 }
 
 .edit-todo:active {
