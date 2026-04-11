@@ -256,6 +256,11 @@ time {
   color: var(---completed-clr);
 }
 
+.end-timer {
+  opacity: 0;
+}
+
+/* MEDIA QUERIES */
 @media screen and (min-width: 480px) {
   .todo-title {
     font-size: 1.5rem;
