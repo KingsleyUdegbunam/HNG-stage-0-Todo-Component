@@ -49,13 +49,15 @@ export function getDueLabel() {
 }
 
 let timerId;
-export function startDueLabel() {
-  timerId = setInterval(getDueLabel, 60000);
+export function startDueLabelUpdate() {
+  timerId = setInterval(getDueLabel, 5000);
+  console.log("timer started");
 }
 
-export function stopDueLabel() {
+export function stopDueLabelUpdate() {
   if (timerId !== undefined) {
     clearInterval(timerId);
     timerId = undefined;
+    console.log("timer Cleared");
   }
 }
