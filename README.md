@@ -29,4 +29,5 @@ HTML · CSS · JavaScript (ES Modules)
 
 ## Live
 
-[View it here](#) · [GitHub Repo](#)
+[View Here](https://todo-card-hng.netlify.app/)  
+[GitHub Repo](https://github.com/KingsleyUdegbunam/HNG-stage-0-Todo-Component)
