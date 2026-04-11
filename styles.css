@@ -2,7 +2,7 @@
 
 :root {
   --primary-font: "DM Sans", sans-serif;
-  --seconday-font: "DM Mono", monospace;
+  --secondary-font: "DM Mono", monospace;
 
   --medium-priority-bg: #faeeda;
   --medium-priority-clr: #633806;
@@ -48,7 +48,7 @@ label {
 }
 
 time {
-  font-family: var(--seconday-font);
+  font-family: var(--secondary-font);
 }
 
 .main-wrapper {
