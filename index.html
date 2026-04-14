@@ -52,7 +52,7 @@
       </div>
     </article>
 
-    <form data-testid="test-todo-edit-form" class="edit-container todo-card">
+    <form data-testid="test-todo-edit-form" class="edit-container">
       <div class="edit-text-container">
         <div class="edit-title">
           <label for="edit-title">Title</label>
@@ -67,22 +67,24 @@
 
       <fieldset class="priority-n-date">
         <legend>Priority & Due Date</legend>
-        <div class="edit-priority-container">
-          <label for="edit-priority">
-            Priority
-          </label>
-          <select data-testid="test-todo-edit-priority-select" name="edit-priority" id="edit-priority">
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-          </select>
-        </div>
-        <div class="edit-due-date-container">
-          <label for="edit-due-date">
-            Due date
-          </label>
-          <input data-testid="test-todo-edit-due-date-input" type="datetime-local" name="edit-due-date"
-            id="edit-due-date">
+        <div class="fieldset-wrapper">
+          <div class="edit-priority-container">
+            <label for="edit-priority">
+              Priority
+            </label>
+            <select data-testid="test-todo-edit-priority-select" name="edit-priority" id="edit-priority">
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+          <div class="edit-due-date-container">
+            <label for="edit-due-date">
+              Due date
+            </label>
+            <input data-testid="test-todo-edit-due-date-input" type="datetime-local" name="edit-due-date"
+              id="edit-due-date">
+          </div>
         </div>
       </fieldset>
       <div class="edit-buttons-container">
