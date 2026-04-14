@@ -270,6 +270,10 @@ time {
   animation: none;
 }
 
+.todo-card.isHidden {
+  display: none;
+}
+
 /* EDIT FORM STYLES */
 .edit-container {
   display: none;
@@ -279,8 +283,44 @@ time {
   display: flex;
 }
 
-.todo-card.isHidden {
-  display: none;
+.edit-container label,
+legend {
+  font-size: 0.8rem;
+}
+.edit-container > *,
+.fieldset-wrapper {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  background-color: lightgray;
+}
+
+.edit-text-container {
+  display: initial;
+}
+
+.edit-text-container > * input,
+.edit-text-container > * textarea {
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.edit-text-container > * textarea {
+  resize: vertical;
+  min-height: 5rem;
+  max-height: 13rem;
+}
+
+.fieldset-wrapper select,
+.fieldset-wrapper input {
+  width: 100%;
+  min-height: 2.5rem;
+}
+
+.fieldset-wrapper > *,
+.edit-buttons-container > * {
+  flex: 1;
 }
 
 /* MEDIA QUERIES */
