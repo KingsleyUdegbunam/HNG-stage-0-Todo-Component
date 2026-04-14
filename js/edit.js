@@ -1,13 +1,11 @@
-const form = document.querySelector(".edit-container");
+import { showViewMode } from "./uiState.js";
 
-const todoCardElem = document.querySelector(".todo-card");
-const editFormElem = document.querySelector(".edit-container");
+const form = document.querySelector(".edit-container");
 
 export function handleFormSubmission() {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    todoCardElem.classList.remove("isHidden");
-    editFormElem.classList.remove("isEditing");
+    showViewMode();
   });
 }

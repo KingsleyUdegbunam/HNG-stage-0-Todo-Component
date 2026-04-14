@@ -1,12 +1,10 @@
 import { startDueLabelUpdate, stopDueLabelUpdate } from "./time.js";
+import { showEditMode } from "./uiState.js";
 
 const todoStatusElem = document.querySelector(".todo-status");
 const taskElem = document.querySelector(".todo-title");
 const inputElem = document.querySelector("#checkbox");
 const dueLabelElem = document.querySelector(".remaining-time");
-
-const todoCardElem = document.querySelector(".todo-card");
-const editFormElem = document.querySelector(".edit-container");
 
 export function handleTaskCompletion() {
   taskElem.classList.toggle("completed-title-style");
@@ -31,9 +29,7 @@ export function handleButtonClick(e) {
   if (!button) return;
   if (button.classList.contains("edit-todo")) {
     console.log("edit clicked");
-
-    todoCardElem.classList.add("isHidden");
-    editFormElem.classList.add("isEditing");
+    showEditMode();
   } else if (button.classList.contains("delete-todo")) {
     stopDueLabelUpdate();
     alert("Delete clicked");
