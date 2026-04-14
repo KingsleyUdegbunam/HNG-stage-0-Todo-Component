@@ -270,7 +270,16 @@ time {
   animation: none;
 }
 
+/* EDIT FORM STYLES */
 .edit-container {
+  display: none;
+}
+
+.edit-container.isEditing {
+  display: flex;
+}
+
+.todo-card.isHidden {
   display: none;
 }
 

@@ -5,6 +5,9 @@ const taskElem = document.querySelector(".todo-title");
 const inputElem = document.querySelector("#checkbox");
 const dueLabelElem = document.querySelector(".remaining-time");
 
+const todoCardElem = document.querySelector(".todo-card");
+const editFormElem = document.querySelector(".edit-container");
+
 export function handleTaskCompletion() {
   taskElem.classList.toggle("completed-title-style");
   todoStatusElem.classList.toggle("completed-status");
@@ -28,6 +31,9 @@ export function handleButtonClick(e) {
   if (!button) return;
   if (button.classList.contains("edit-todo")) {
     console.log("edit clicked");
+
+    todoCardElem.classList.add("isHidden");
+    editFormElem.classList.add("isEditing");
   } else if (button.classList.contains("delete-todo")) {
     stopDueLabelUpdate();
     alert("Delete clicked");
