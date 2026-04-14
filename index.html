@@ -51,6 +51,47 @@
 
       </div>
     </article>
+
+    <form data-testid="test-todo-edit-form" class="edit-container todo-card">
+      <div class="edit-text-container">
+        <div class="edit-title">
+          <label for="edit-title">Title</label>
+          <input data-testid="test-todo-edit-title-input" type="text" name="edit-title" id="edit-title">
+        </div>
+
+        <div class="edit-desc">
+          <label for="edit-desc">Description</label>
+          <textarea data-testid="test-todo-edit-description-input" name="edit-desc" id="edit-desc"></textarea>
+        </div>
+      </div>
+
+      <fieldset class="priority-n-date">
+        <legend>Priority & Due Date</legend>
+        <div class="edit-priority-container">
+          <label for="edit-priority">
+            Priority
+          </label>
+          <select data-testid="test-todo-edit-priority-select" name="edit-priority" id="edit-priority">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+        <div class="edit-due-date-container">
+          <label for="edit-due-date">
+            Due date
+          </label>
+          <input data-testid="test-todo-edit-due-date-input" type="datetime-local" name="edit-due-date"
+            id="edit-due-date">
+        </div>
+      </fieldset>
+      <div class="edit-buttons-container">
+        <button type="button" class="edit-btn edit-btn--cancel" data-testid="test-todo-cancel-button"
+          title="Cancel changes">Cancel</button>
+        <button type="submit" class="edit-btn edit-btn--save" data-testid="test-todo-save-button"
+          title="Save changes">Save</button>
+      </div>
+    </form>
   </div>
 
   <script type="module" src="./js/main.js"></script>
