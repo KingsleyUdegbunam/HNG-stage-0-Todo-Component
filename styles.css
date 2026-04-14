@@ -57,7 +57,8 @@ time {
 }
 
 /* CARD STYLE */
-.todo-card {
+.todo-card,
+.edit-container {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -267,6 +268,10 @@ time {
   border-radius: 50%;
   background-color: var(--completed-clr);
   animation: none;
+}
+
+.edit-container {
+  display: none;
 }
 
 /* MEDIA QUERIES */
