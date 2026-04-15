@@ -12,6 +12,7 @@
 
   --completed-bg: #dafae1;
   --completed-clr: #066325;
+  --completed-light-clr: #0d9c3d;
 
   --todo-desc-clr: rgb(54, 54, 54);
   --border-clr: rgb(190, 190, 190);
@@ -35,7 +36,10 @@ span,
 button,
 li,
 h2,
-label {
+label,
+input,
+textarea,
+select {
   font-family: var(--primary-font);
 }
 label {
@@ -47,7 +51,8 @@ label {
   cursor: pointer;
 }
 
-time {
+time,
+input[id="edit-due-date"] {
   font-family: var(--secondary-font);
 }
 
@@ -282,6 +287,11 @@ time {
 }
 
 /* EDIT FORM STYLES */
+select,
+input[id="edit-due-date"] {
+  cursor: pointer;
+}
+
 .edit-container {
   display: none;
 }
@@ -293,24 +303,31 @@ time {
 .edit-container label,
 legend {
   font-size: 0.8rem;
+  cursor: default;
+  font-weight: 500;
 }
+
 .edit-container > *,
 .fieldset-wrapper {
   width: 100%;
   display: flex;
   gap: 1rem;
   justify-content: space-between;
-  /* background-color: lightgray; */
 }
 
 .edit-text-container {
   display: initial;
 }
 
+.edit-text-container > *:first-child {
+  margin-block-end: 1.5rem;
+}
+
 .edit-text-container > * input,
 .edit-text-container > * textarea {
   padding: 0.5rem;
   width: 100%;
+  border: 1px solid var(--border-clr);
 }
 
 .edit-text-container > * textarea {
@@ -323,11 +340,44 @@ legend {
 .fieldset-wrapper input {
   width: 100%;
   min-height: 2.5rem;
+  border: 1px solid var(--border-clr);
+  padding: 0.5rem;
 }
 
 .fieldset-wrapper > *,
 .edit-buttons-container > * {
   flex: 1;
+}
+
+fieldset {
+  position: relative;
+  border: none;
+  padding-inline: 0;
+}
+
+legend {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.edit-btn--save {
+  border-color: var(--completed-clr);
+  color: var(--completed-clr);
+  background-color: var(--completed-bg);
+}
+
+.edit-btn--save:hover {
+  background-color: var(--completed-light-clr);
+  border-color: var(--completed-light-clr);
+  color: white;
+}
+
+.edit-btn--save:active {
+  background-color: var(--completed-clr);
 }
 
 /* MEDIA QUERIES */
