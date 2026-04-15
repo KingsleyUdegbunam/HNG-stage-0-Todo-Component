@@ -68,3 +68,7 @@ export function stopDueLabelUpdate() {
     timerId = undefined;
   }
 }
+
+export function toDateTimeLocal(isoDate) {
+  return dayjs(isoDate).format("YYYY-MM-DDTHH:mm");
+}
