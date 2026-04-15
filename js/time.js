@@ -11,10 +11,13 @@ const utcTime = dueLocalTime.utc().format();
 
 dueTimeElem.setAttribute("datetime", utcTime);
 
-const dueTimeFormatted = dayjs(utcTime).format("MMM DD,YYYY HH:mm");
+export function toHTMLDate(utcTime) {
+  const dueTimeFormatted = dayjs(utcTime).format("MMM DD,YYYY HH:mm");
+  const dueTimeHTML = `Due ${dueTimeFormatted}`;
+  return dueTimeHTML;
+}
 
-const dueTimeHTML = `Due ${dueTimeFormatted}`;
-dueTimeElem.innerHTML = dueTimeHTML;
+dueTimeElem.innerHTML = toHTMLDate(utcTime);
 
 export function getDueLabel() {
   const due = dayjs(utcTime);
