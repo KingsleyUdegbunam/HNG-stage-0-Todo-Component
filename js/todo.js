@@ -1,3 +1,4 @@
+import { fillEditForm, initializeEdit } from "./edit.js";
 import { startDueLabelUpdate, stopDueLabelUpdate } from "./time.js";
 import { showEditMode } from "./uiState.js";
 
@@ -30,6 +31,7 @@ export function handleButtonClick(e) {
   if (button.classList.contains("edit-todo")) {
     console.log("edit clicked");
     showEditMode();
+    fillEditForm(initializeEdit());
   } else if (button.classList.contains("delete-todo")) {
     stopDueLabelUpdate();
     alert("Delete clicked");
