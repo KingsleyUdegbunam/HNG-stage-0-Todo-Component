@@ -10,6 +10,8 @@ const dueLabelElem = document.querySelector(".remaining-time");
 const priorityElem = document.querySelector(".priority");
 const todoContainer = document.querySelector(".todo-card");
 
+const prioritySelector = document.querySelector(".status-selector");
+
 function setPriority(level) {
   todoContainer.classList.remove(
     "low-priority",
@@ -34,20 +36,100 @@ export function enhancePriority() {
 
 enhancePriority();
 
-export function handleTaskCompletion() {
-  taskElem.classList.toggle("completed-title-style");
-  todoStatusElem.classList.toggle("completed-status");
-  todoStatusElem.classList.toggle("stop-animation");
+function selectPriority(e) {
+  const button = e.target.closest("button");
+  if (!button) return;
 
-  dueLabelElem.classList.toggle("end-timer");
+  const buttons = prioritySelector.querySelectorAll("button");
 
-  const isCompleted = inputElem.checked;
-  if (isCompleted) {
-    todoStatusElem.textContent = "Done";
+  buttons.forEach((button) =>
+    button.classList.remove(
+      "completed-status",
+      "pending-select",
+      "in-progress-select",
+    ),
+  );
+
+  todoStatusElem.classList.remove(
+    "completed-status",
+    "pending-select",
+    "in-progress-select",
+  );
+
+  dueLabelElem.classList.remove("end-timer");
+
+  taskElem.classList.remove("completed-title-style");
+  inputElem.checked = false;
+
+  if (button.classList.contains("pending-status")) {
+    button.classList.add("pending-select");
+    todoStatusElem.classList.add("pending-select");
+    todoStatusElem.textContent = button.textContent;
+  } else if (button.classList.contains("in-progress-status")) {
+    button.classList.add("in-progress-select");
+    todoStatusElem.classList.add("in-progress-select");
+    todoStatusElem.textContent = button.textContent;
+  } else if (button.classList.contains("done-status")) {
+    button.classList.add("completed-status");
+    todoStatusElem.textContent = button.textContent;
+    handleTaskCompletion("status");
+  }
+}
+
+prioritySelector.addEventListener("click", (e) => {
+  selectPriority(e);
+});
+
+const doneStatusElem = document.querySelector(".done-status");
+const inProgressStatusElem = document.querySelector(".in-progress-status");
+const pendingStatusElem = document.querySelector(".pending-status");
+
+function remmoveStatusIndicator() {
+  todoStatusElem.classList.remove(
+    "completed-status",
+    "pending-select",
+    "in-progress-select",
+  );
+
+  pendingStatusElem.classList.remove("pending-select");
+  inProgressStatusElem.classList.remove("in-progress-select");
+  doneStatusElem.classList.remove("completed-status");
+}
+
+export function handleTaskCompletion(method) {
+  if (method === "checkbox") {
+    const isCompleted = inputElem.checked;
+    if (isCompleted) {
+      taskElem.classList.add("completed-title-style");
+
+      remmoveStatusIndicator();
+
+      todoStatusElem.textContent = "Done";
+      todoStatusElem.classList.add("completed-status");
+      doneStatusElem.classList.add("completed-status");
+      dueLabelElem.classList.add("end-timer");
+
+      stopDueLabelUpdate();
+    } else {
+      remmoveStatusIndicator();
+
+      taskElem.classList.remove("completed-title-style");
+      todoStatusElem.textContent = "Pending";
+
+      pendingStatusElem.classList.add("pending-select");
+      todoStatusElem.classList.add("pending-select");
+
+      startDueLabelUpdate();
+      dueLabelElem.classList.remove("end-timer");
+    }
+  } else if (method === "status") {
+    if (inputElem.checked) return;
+    inputElem.checked = true;
+    taskElem.classList.add("completed-title-style");
+    todoStatusElem.classList.add("completed-status");
+
     stopDueLabelUpdate();
-  } else {
-    todoStatusElem.textContent = "In Progress";
-    startDueLabelUpdate();
+    dueLabelElem.classList.add("end-timer");
   }
 }
 

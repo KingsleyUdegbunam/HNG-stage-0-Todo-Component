@@ -11,6 +11,8 @@
   --medium-priority-card-bg: rgba(250, 238, 218, 0.3);
   --high-priority-card-bg: rgba(250, 218, 218, 0.3);
 
+  --low-priority-card-pill-bg: rgba(26, 26, 26, 0.407);
+
   --high-priority-bg: #fadada;
   --low-priority-card: rgba(178, 178, 178, 0.3);
   --medium-priority-bg: #faeeda;
@@ -142,24 +144,12 @@ input[id="edit-due-date"] {
   align-items: center;
   gap: 6px;
 
-  color: var(--in-progress-clr);
-  background-color: var(--in-progress-bg);
-
   cursor: pointer;
   transition: opacity 300ms ease-in-out;
 }
 
 .todo-status:hover {
   opacity: 0.8;
-}
-
-.todo-status::before {
-  content: " ";
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
-  background-color: var(--in-progress-clr);
-  animation: pulsate 1s infinite ease-in-out;
 }
 
 @keyframes pulsate {
@@ -217,6 +207,18 @@ input[id="edit-due-date"] {
 .buttons {
   display: flex;
   gap: 1rem;
+}
+
+.status-selector {
+  padding-block-start: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.status-selector > * {
+  border: 1px solid var(--border-clr);
+  padding: 0.5rem 1rem;
+  background-color: transparent;
 }
 
 /* EDIT & CARD STATE BUTTONS */
@@ -279,16 +281,45 @@ input[id="edit-due-date"] {
   color: var(--completed-clr);
 }
 
+.pending-select {
+  background-color: var(--low-priority-card-pill-bg);
+  color: white;
+}
+
+.in-progress-select {
+  color: var(--in-progress-clr);
+  background-color: var(--in-progress-bg);
+}
+
+.in-progress-select::before {
+  content: " ";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--in-progress-clr);
+  animation: pulsate 1s infinite ease-in-out;
+}
+
 .end-timer {
   opacity: 0;
 }
 
-.todo-status.stop-animation::before {
+.todo-status.completed-status::before {
   content: " ";
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
   background-color: var(--completed-clr);
+  animation: none;
+}
+
+/* ALWAYS KEEP AFTER STOP ANIMATION */
+.todo-status.pending-select::before {
+  content: " ";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--low-priority-card-pill-bg);
   animation: none;
 }
 

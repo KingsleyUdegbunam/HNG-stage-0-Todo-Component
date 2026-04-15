@@ -5,7 +5,9 @@ import { handleFormSubmission } from "./edit.js";
 const inputElem = document.querySelector("#checkbox");
 const buttonContainerElem = document.querySelector(".buttons");
 
-inputElem.addEventListener("change", handleTaskCompletion);
+inputElem.addEventListener("change", () => {
+  handleTaskCompletion("checkbox");
+});
 
 buttonContainerElem.addEventListener("click", handleButtonClick);
 
