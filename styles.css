@@ -124,6 +124,7 @@ input[id="edit-due-date"] {
 
 .priority,
 .remaining-time,
+.overdue-time,
 .todo-status {
   font-family: var(--primary-font);
   font-weight: 500;
@@ -131,9 +132,23 @@ input[id="edit-due-date"] {
   padding: 0.3rem 0.8rem;
 }
 
-.remaining-time {
+.remaining-time,
+.overdue-time {
   background-color: var(--medium-priority-bg);
   color: var(--medium-priority-clr);
+}
+
+.overdue-time {
+  display: none;
+}
+.remaining-time.isHidden {
+  display: none;
+}
+
+.overdue-time.isActive {
+  display: inline-block;
+  background-color: var(--high-priority-bg);
+  color: var(--delete-btn-clr);
 }
 
 .date-time-status {

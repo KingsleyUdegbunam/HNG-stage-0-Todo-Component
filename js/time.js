@@ -4,6 +4,7 @@ dayjs.extend(utc);
 
 const dueTimeElem = document.querySelector(".due-date");
 const timeLeftElem = document.querySelector(".remaining-time");
+const overdueElem = document.querySelector(".overdue-time");
 
 // TIME LOGIC
 const dueLocalTime = dayjs("2026-04-16 23:59", "YYYY-MM-DD HH:mm");
@@ -25,14 +26,16 @@ export function getDueLabel() {
   const today = dayjs();
   const minuteLeft = due.diff(today, "minute");
   if (minuteLeft < 0) {
+    timeLeftElem.classList.add("isHidden");
+    overdueElem.classList.add("isActive");
     const abs = Math.abs(minuteLeft);
     if (abs > 4320) {
       // overdue by more than 3 days — stop the timer
-      timeLeftElem.textContent = "Long overdue";
+      overdueElem.textContent = "Long overdue";
       return true;
     } else if (abs >= 60) {
       const hours = Math.round(abs / 60);
-      timeLeftElem.textContent = `Overdue ${hours} hour${hours > 1 ? "s" : ""}`;
+      overdueElem.textContent = `Overdue ${hours} hour${hours > 1 ? "s" : ""}`;
     } else {
       const mins = Math.round(abs);
       timeLeftElem.textContent = `Overdue ${mins} min${mins > 1 ? "s" : ""}`;
