@@ -18,6 +18,12 @@
 
         <h2 class="todo-title" data-testid="test-todo-title">Complete Stage 0 Task</h2>
         <p class="todo-desc" data-testid="test-todo-description">Build a clean, modern Todo Item Card.</p>
+
+        <div class="status-selector">
+          <button class="pending-status">Pending</button>
+          <button class="in-progress-status in-progress-select">In Progress</button>
+          <button class="done-status">Done</button>
+        </div>
       </div>
 
       <div class="todo-meta">
@@ -28,7 +34,7 @@
             </time>
             <time aria-live="polite" class="remaining-time" data-testid="test-todo-time-remaining"></time>
           </div>
-          <span class="todo-status" data-testid="test-todo-status">In Progress</span>
+          <span class="todo-status in-progress-select" data-testid="test-todo-status">In Progress</span>
         </div>
 
         <ul role="list" class="todo-tags" data-testid="test-todo-tags">
