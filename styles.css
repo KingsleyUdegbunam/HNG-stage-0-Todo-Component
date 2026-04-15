@@ -328,7 +328,7 @@ input[id="edit-due-date"] {
   animation: none;
 }
 
-.todo-card.isHidden {
+.todo-card-wrapper.isHidden {
   display: none;
 }
 
