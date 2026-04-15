@@ -19,4 +19,7 @@ function updateTodoCard(todo) {
 
 getDueLabel();
 startDueLabelUpdate();
-handleFormSubmission();
+
+handleFormSubmission((todo) => {
+  updateTodoCard(todo);
+});
