@@ -1,6 +1,7 @@
 import { showViewMode } from "./uiState.js";
 
 const form = document.querySelector(".edit-container");
+const cancelBtn = document.querySelector(".edit-btn--cancel");
 
 export function handleFormSubmission(onSave) {
   form.addEventListener("submit", (e) => {
@@ -22,3 +23,7 @@ export function handleFormSubmission(onSave) {
     showViewMode();
   });
 }
+
+cancelBtn.addEventListener("click", () => {
+  showViewMode();
+});
