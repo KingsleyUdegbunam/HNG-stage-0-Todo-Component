@@ -321,7 +321,8 @@ input[id="edit-due-date"] {
 }
 
 .end-timer {
-  opacity: 0;
+  background-color: var(--completed-bg);
+  color: var(--completed-clr);
 }
 
 .todo-status.completed-status::before {
