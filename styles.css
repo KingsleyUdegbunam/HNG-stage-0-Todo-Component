@@ -232,6 +232,7 @@ input[id="edit-due-date"] {
 .status-selector {
   padding-block-start: 1.5rem;
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
@@ -239,6 +240,7 @@ input[id="edit-due-date"] {
   border: 1px solid var(--border-clr);
   padding: 0.5rem 1rem;
   background-color: transparent;
+  font-size: 0.85rem;
 }
 
 /* EDIT & CARD STATE BUTTONS */
@@ -486,7 +488,7 @@ legend {
   }
 
   .buttons > *,
-  .edit-buttons-container > * {
+  .status-selector > * .edit-buttons-container > * {
     padding: 0.5rem 1.5rem;
   }
 }
