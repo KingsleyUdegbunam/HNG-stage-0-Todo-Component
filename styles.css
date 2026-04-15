@@ -81,6 +81,12 @@ input[id="edit-due-date"] {
 .main-wrapper {
   height: 100vh;
   display: grid;
+
+  overflow-y: hidden;
+}
+
+body {
+  overflow: hidden;
 }
 
 /* CARD STYLE */
@@ -390,10 +396,6 @@ input[id="edit-due-date"] {
 }
 
 /* EDIT FORM STYLES */
-select,
-input[id="edit-due-date"] {
-  cursor: pointer;
-}
 
 input[id="edit-due-date"] {
   max-width: fit-content;
@@ -449,6 +451,7 @@ legend {
   min-height: 2.5rem;
   border: 1px solid var(--border-clr);
   padding: 0.5rem;
+  font-size: 0.9rem;
 }
 
 .fieldset-wrapper > *,
