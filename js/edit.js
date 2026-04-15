@@ -3,6 +3,7 @@ import { showViewMode } from "./uiState.js";
 
 const form = document.querySelector(".edit-container");
 const cancelBtn = document.querySelector(".edit-btn--cancel");
+const editlBtn = document.querySelector(".edit-todo");
 
 export function handleFormSubmission(onSave) {
   form.addEventListener("submit", (e) => {
@@ -27,6 +28,7 @@ export function handleFormSubmission(onSave) {
 
 cancelBtn.addEventListener("click", () => {
   showViewMode();
+  editlBtn.focus();
 });
 
 export function initializeEdit() {
@@ -47,4 +49,5 @@ export function fillEditForm(todoDetails) {
   document.querySelector("#edit-due-date").value = toDateTimeLocal(
     todoDetails.dueDate,
   );
+  document.querySelector("#edit-title").focus();
 }
