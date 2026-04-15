@@ -52,6 +52,18 @@ textarea,
 select {
   font-family: var(--primary-font);
 }
+
+select,
+input {
+  color: black;
+}
+
+select,
+input,
+textarea {
+  border-radius: 0.2rem;
+}
+
 label {
   display: flex;
   align-items: center;
@@ -381,6 +393,10 @@ input[id="edit-due-date"] {
 select,
 input[id="edit-due-date"] {
   cursor: pointer;
+}
+
+input[id="edit-due-date"] {
+  max-width: fit-content;
 }
 
 .edit-container {
