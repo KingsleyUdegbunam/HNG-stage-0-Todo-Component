@@ -7,6 +7,14 @@
   --medium-priority-bg: #faeeda;
   --medium-priority-clr: #633806;
 
+  --low-priority-card-bg: rgba(225, 225, 225, 0.3);
+  --medium-priority-card-bg: rgba(250, 238, 218, 0.3);
+  --high-priority-card-bg: rgba(250, 218, 218, 0.3);
+
+  --high-priority-bg: #fadada;
+  --low-priority-card: rgba(178, 178, 178, 0.3);
+  --medium-priority-bg: #faeeda;
+
   --in-progress-bg: #daf1fa;
   --in-progress-clr: #064763;
 
@@ -112,11 +120,13 @@ input[id="edit-due-date"] {
 .todo-status {
   font-family: var(--primary-font);
   font-weight: 500;
+  border-radius: 1rem;
+  padding: 0.3rem 0.8rem;
+}
+
+.remaining-time {
   background-color: var(--medium-priority-bg);
   color: var(--medium-priority-clr);
-  border-radius: 1rem;
-
-  padding: 0.3rem 0.8rem;
 }
 
 .date-time-status {
@@ -284,6 +294,33 @@ input[id="edit-due-date"] {
 
 .todo-card.isHidden {
   display: none;
+}
+
+.low-priority {
+  background-color: var(--low-priority-card-bg);
+}
+
+.medium-priority {
+  background-color: var(--medium-priority-card-bg);
+}
+
+.medium-priority-pill {
+  background-color: var(--medium-priority-bg);
+  color: var(--medium-priority-clr);
+}
+
+.high-priority {
+  background-color: var(--high-priority-card-bg);
+}
+
+.low-priority-pill {
+  color: black;
+  background-color: var(--low-priority-card);
+}
+
+.high-priority-pill {
+  color: var(--delete-btn-bg-hover);
+  background-color: var(--high-priority-bg);
 }
 
 /* EDIT FORM STYLES */

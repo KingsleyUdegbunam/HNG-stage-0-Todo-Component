@@ -1,4 +1,5 @@
 import { toDateTimeLocal } from "./time.js";
+import { enhancePriority } from "./todo.js";
 import { showViewMode } from "./uiState.js";
 
 const form = document.querySelector(".edit-container");
@@ -23,6 +24,7 @@ export function handleFormSubmission(onSave) {
     //
 
     showViewMode();
+    enhancePriority();
   });
 }
 
