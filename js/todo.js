@@ -7,57 +7,29 @@ const taskElem = document.querySelector(".todo-title");
 const inputElem = document.querySelector("#checkbox");
 const dueLabelElem = document.querySelector(".remaining-time");
 
+const priorityElem = document.querySelector(".priority");
+const todoContainer = document.querySelector(".todo-card");
+
+function setPriority(level) {
+  todoContainer.classList.remove(
+    "low-priority",
+    "medium-priority",
+    "high-priority",
+  );
+
+  priorityElem.classList.remove(
+    "low-priority-pill",
+    "medium-priority-pill",
+    "high-priority-pill",
+  );
+
+  todoContainer.classList.add(`${level}-priority`);
+  priorityElem.classList.add(`${level}-priority-pill`);
+}
+
 export function enhancePriority() {
-  const priorityElem = document.querySelector(".priority");
-  const todoContainer = document.querySelector(".todo-card");
-
-  if (priorityElem.textContent.trim() === "Low") {
-    if (priorityElem.classList.contains("high-priority-pill")) {
-      priorityElem.classList.remove("high-priority-pill");
-    }
-    if (todoContainer.classList.contains("high-priority")) {
-      todoContainer.classList.remove("high-priority");
-    }
-    if (priorityElem.classList.contains("medium-priority-pill")) {
-      priorityElem.classList.remove("medium-priority-pill");
-    }
-    if (todoContainer.classList.contains("medium-priority")) {
-      todoContainer.classList.remove("medium-priority");
-    }
-    todoContainer.classList.add("low-priority");
-    priorityElem.classList.add("low-priority-pill");
-  } else if (priorityElem.textContent.trim() === "Medium") {
-    if (priorityElem.classList.contains("high-priority-pill")) {
-      priorityElem.classList.remove("high-priority-pill");
-    }
-    if (todoContainer.classList.contains("high-priority")) {
-      todoContainer.classList.remove("high-priority");
-    }
-    if (priorityElem.classList.contains("low-priority-pill")) {
-      priorityElem.classList.remove("low-priority-pill");
-    }
-    if (todoContainer.classList.contains("low-priority")) {
-      todoContainer.classList.remove("low-priority");
-    }
-    priorityElem.classList.add("medium-priority-pill");
-    todoContainer.classList.add("medium-priority");
-  } else if (priorityElem.textContent.trim() === "High") {
-    if (priorityElem.classList.contains("medium-priority-pill")) {
-      priorityElem.classList.remove("medium-priority-pill");
-    }
-    if (todoContainer.classList.contains("medium-priority")) {
-      todoContainer.classList.remove("medium-priority");
-    }
-    if (priorityElem.classList.contains("low-priority-pill")) {
-      priorityElem.classList.remove("low-priority-pill");
-    }
-    if (todoContainer.classList.contains("low-priority")) {
-      todoContainer.classList.remove("low-priority");
-    }
-
-    todoContainer.classList.add("high-priority");
-    priorityElem.classList.add("high-priority-pill");
-  }
+  const level = priorityElem.textContent.trim().toLowerCase();
+  setPriority(level);
 }
 
 enhancePriority();
