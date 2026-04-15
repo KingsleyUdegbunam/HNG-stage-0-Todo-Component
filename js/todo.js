@@ -8,12 +8,13 @@ const inputElem = document.querySelector("#checkbox");
 const dueLabelElem = document.querySelector(".remaining-time");
 
 const priorityElem = document.querySelector(".priority");
-const todoContainer = document.querySelector(".todo-card");
+
+const todoContainerWrapper = document.querySelector(".todo-card-wrapper");
 
 const prioritySelector = document.querySelector(".status-selector");
 
 function setPriority(level) {
-  todoContainer.classList.remove(
+  todoContainerWrapper.classList.remove(
     "low-priority",
     "medium-priority",
     "high-priority",
@@ -25,7 +26,7 @@ function setPriority(level) {
     "high-priority-pill",
   );
 
-  todoContainer.classList.add(`${level}-priority`);
+  todoContainerWrapper.classList.add(`${level}-priority`);
   priorityElem.classList.add(`${level}-priority-pill`);
 }
 
