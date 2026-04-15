@@ -68,12 +68,14 @@ time {
   padding: 2rem 1rem;
 }
 
-.todo-card > * {
+.todo-card > *,
+.edit-container > * {
   border-block-end: 1px solid var(--border-clr);
   padding-block: 1.5rem;
 }
 
-.todo-card > *:last-child {
+.todo-card > *:last-child,
+.edit-container > *:last-child {
   border-block-end: none;
 }
 
@@ -202,7 +204,9 @@ time {
   gap: 1rem;
 }
 
-.buttons > * {
+/* EDIT & CARD STATE BUTTONS */
+.buttons > *,
+.edit-buttons-container > * {
   flex: 1;
 
   padding: 0.3rem 1.2rem;
@@ -232,12 +236,15 @@ time {
 }
 
 .edit-todo:hover,
-.edit-todo:focus {
+.edit-todo:focus,
+.edit-btn--cancel:hover,
+.edit-btn--cancel:focus {
   background-color: var(--edit-btn-bg-hover);
   color: var(--edit-btn-clr-hover);
 }
 
-.edit-todo:active {
+.edit-todo:active,
+.edit-btn--cancel:active {
   background-color: var(--edit-btn-bg-active);
   color: var(--edit-btn-clr-active);
 }
@@ -293,7 +300,7 @@ legend {
   display: flex;
   gap: 1rem;
   justify-content: space-between;
-  background-color: lightgray;
+  /* background-color: lightgray; */
 }
 
 .edit-text-container {
@@ -339,13 +346,15 @@ legend {
     font-size: 0.95rem;
   }
 
-  .buttons > * {
+  .buttons > *,
+  .edit-buttons-container > * {
     padding: 0.5rem 1.5rem;
   }
 }
 
 @media screen and (min-width: 520px) {
-  .todo-card {
+  .todo-card,
+  .edit-container {
     border: 3px solid var(--border-clr);
     border-radius: 1rem;
     transition:
@@ -353,7 +362,8 @@ legend {
       box-shadow 0.25s ease;
   }
 
-  .todo-card:hover {
+  .todo-card:hover,
+  .edit-container:hover {
     transform: translateY(-1.5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
   }
