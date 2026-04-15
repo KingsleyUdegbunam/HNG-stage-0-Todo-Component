@@ -73,6 +73,7 @@ input[id="edit-due-date"] {
 
 /* CARD STYLE */
 .todo-card,
+.todo-card-wrapper,
 .edit-container {
   display: flex;
   flex-direction: column;
@@ -81,6 +82,10 @@ input[id="edit-due-date"] {
   max-width: 500px;
   margin: auto;
   padding: 2rem 1rem;
+}
+
+.todo-card-wrapper {
+  padding: 0;
 }
 
 .todo-card > *,
