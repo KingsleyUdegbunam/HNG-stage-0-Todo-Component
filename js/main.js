@@ -1,5 +1,5 @@
 import { handleButtonClick, handleTaskCompletion } from "./todo.js";
-import { startDueLabelUpdate, toHTMLDate } from "./time.js";
+import { startDueLabelUpdate, toHTMLDate, updateDueLabelOnce } from "./time.js";
 import { handleFormSubmission } from "./edit.js";
 
 const inputElem = document.querySelector("#checkbox");
@@ -19,6 +19,7 @@ function updateTodoCard(todo) {
   document.querySelector(".due-date").setAttribute("datetime", todo.dueDate);
 }
 
+updateDueLabelOnce();
 startDueLabelUpdate();
 
 handleFormSubmission((todo) => {
