@@ -60,7 +60,8 @@ function getDueLabel(dueTime) {
   if (minuteLeft <= 5) return { label: "Due now" };
   if (minuteLeft <= 30) return { label: `Due in ${minuteLeft} mins` };
   if (minuteLeft <= 60) return { label: "Due soon" };
-  if (minuteLeft <= 1440) return { label: "Today" };
+  if (minuteLeft <= 1440)
+    return { label: `Due in ${Math.round(minuteLeft / 60)} hours` };
   if (minuteLeft <= 2880) return { label: "Tomorrow" };
 
   return { label: `${Math.round(minuteLeft / 1440)} days left` };
