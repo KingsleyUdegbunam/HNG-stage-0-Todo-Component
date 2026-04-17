@@ -83,16 +83,23 @@ function renderDueLabel({ label, isOverdue }) {
 
 let timerId;
 export function startDueLabelUpdate() {
-  if (timerId) return;
+  if (timerId || !dueTime) return;
+
+  const result = getDueLabel(dueTime);
+  renderDueLabel(result);
+
+  if (result.isExpired) {
+    return;
+  }
 
   timerId = setInterval(() => {
-    const result = getDueLabel(dueTime);
+    console.log("Timer started");
     renderDueLabel(result);
 
     if (result.isExpired) {
       stopDueLabelUpdate();
     }
-  }, 60000);
+  }, 30000);
 }
 
 export function stopDueLabelUpdate() {
