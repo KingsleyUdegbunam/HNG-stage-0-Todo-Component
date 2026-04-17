@@ -167,6 +167,7 @@ const btn = document.querySelector(".expand-toggle");
 btn.addEventListener("click", () => {
   const isExpanded = container.classList.toggle("expanded");
   btn.textContent = isExpanded ? "Read less" : "Read more";
+  btn.setAttribute("aria-expanded", isExpanded);
 });
 
 export function toggleDescCollapse() {
