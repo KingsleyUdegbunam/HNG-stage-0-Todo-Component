@@ -1,9 +1,5 @@
 import { fillEditForm, initializeEdit } from "./edit.js";
-import {
-  getDueLabel,
-  startDueLabelUpdate,
-  stopDueLabelUpdate,
-} from "./time.js";
+import { startDueLabelUpdate, stopDueLabelUpdate } from "./time.js";
 import { showEditMode } from "./uiState.js";
 
 const todoStatusElem = document.querySelector(".todo-status");
@@ -70,12 +66,12 @@ function selectPriority(e) {
     button.classList.add("pending-select");
     todoStatusElem.classList.add("pending-select");
     todoStatusElem.textContent = button.textContent;
-    getDueLabel();
+    startDueLabelUpdate();
   } else if (button.classList.contains("in-progress-status")) {
     button.classList.add("in-progress-select");
     todoStatusElem.classList.add("in-progress-select");
     todoStatusElem.textContent = button.textContent;
-    getDueLabel();
+    startDueLabelUpdate();
   } else if (button.classList.contains("done-status")) {
     button.classList.add("completed-status");
     todoStatusElem.textContent = button.textContent;
@@ -127,9 +123,8 @@ export function handleTaskCompletion(method) {
       pendingStatusElem.classList.add("pending-select");
       todoStatusElem.classList.add("pending-select");
 
-      startDueLabelUpdate();
       dueLabelElem.classList.remove("end-timer");
-      getDueLabel();
+      startDueLabelUpdate();
     }
   } else if (method === "status") {
     if (inputElem.checked) return;
