@@ -172,7 +172,6 @@ btn.addEventListener("click", () => {
 export function toggleDescCollapse() {
   const containerHeight = container.clientHeight;
   const textHeight = text.scrollHeight;
-  console.log(containerHeight, textHeight);
 
   if (textHeight > containerHeight) {
     btn.classList.add("isVisible");

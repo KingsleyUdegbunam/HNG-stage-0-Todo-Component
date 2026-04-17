@@ -23,9 +23,6 @@ export function setDeadLine(newDeadline) {
     "YYYY-MM-DD HH:mm",
   );
   dueTime = dueLocalTime.utc().format();
-
-  console.log("initialise dueTimeElem");
-
   dueTimeElem.setAttribute("datetime", dueTime);
   dueTimeElem.innerHTML = toHTMLDate(dueTime);
 }
@@ -86,7 +83,6 @@ export function startDueLabelUpdate() {
   if (timerId || !dueTime) return;
 
   timerId = setInterval(() => {
-    console.log("Timer started");
     const result = getDueLabel(dueTime);
     renderDueLabel(result);
 
@@ -100,8 +96,6 @@ export function updateDueLabelOnce() {
   if (!dueTime) return;
   const result = getDueLabel(dueTime);
   renderDueLabel(result);
-
-  console.log("started");
 }
 
 export function stopDueLabelUpdate() {
