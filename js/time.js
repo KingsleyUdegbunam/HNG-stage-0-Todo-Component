@@ -7,10 +7,8 @@ const timeLeftElem = document.querySelector(".remaining-time");
 const overdueElem = document.querySelector(".overdue-time");
 
 // TIME LOGIC
-const dueLocalTime = dayjs("2026-04-16 23:59", "YYYY-MM-DD HH:mm");
-const utcTime = dueLocalTime.utc().format();
-
-dueTimeElem.setAttribute("datetime", utcTime);
+// dueTime, Global source of truth
+let dueTime;
 
 export function toHTMLDate(utcTime) {
   const dueTimeFormatted = dayjs(utcTime).format("MMM DD,YYYY HH:mm");
@@ -18,52 +16,81 @@ export function toHTMLDate(utcTime) {
   return dueTimeHTML;
 }
 
-dueTimeElem.innerHTML = toHTMLDate(utcTime);
+// Set the textContent and datetime attribute of due time elem
+export function setDeadLine(newDeadline) {
+  const dueLocalTime = dayjs(
+    newDeadline ?? "2026-04-17 23:59",
+    "YYYY-MM-DD HH:mm",
+  );
+  dueTime = dueLocalTime.utc().format();
 
-export function getDueLabel() {
-  const due = dayjs(utcTime);
+  console.log("initialise dueTimeElem");
 
-  const today = dayjs();
-  const minuteLeft = due.diff(today, "minute");
+  dueTimeElem.setAttribute("datetime", dueTime);
+  dueTimeElem.innerHTML = toHTMLDate(dueTime);
+}
+
+// Initialize due time HTML and datetime attribute
+setDeadLine();
+
+// Engine to calculate time left and formulate right label text and display
+function getDueLabel(dueTime) {
+  const now = dayjs();
+  const minuteLeft = dayjs(dueTime).diff(now, "minute");
+
   if (minuteLeft < 0) {
+    const abs = Math.abs(minuteLeft);
+    if (abs > 4320)
+      return {
+        label: "Long overdue",
+        isExpired: true,
+        isOverdue: true,
+      };
+
+    if (abs >= 60) {
+      const hours = Math.round(abs / 60);
+      return {
+        label: `Overdue ${hours} hour${hours > 1 ? "s" : ""}`,
+        isOverdue: true,
+      };
+    }
+    return {
+      label: `Overdue ${abs} min${abs > 1 ? "s" : ""}`,
+      isOverdue: true,
+    };
+  }
+
+  if (minuteLeft <= 5) return { label: "Due now" };
+  if (minuteLeft <= 30) return { label: `Due in ${minuteLeft} mins` };
+  if (minuteLeft <= 60) return { label: "Due soon" };
+  if (minuteLeft <= 1440) return { label: "Today" };
+  if (minuteLeft <= 2880) return { label: "Tomorrow" };
+
+  return { label: `${Math.round(minuteLeft / 1440)} days left` };
+}
+
+function renderDueLabel({ label, isOverdue }) {
+  if (isOverdue) {
     timeLeftElem.classList.add("isHidden");
     overdueElem.classList.add("isActive");
-    const abs = Math.abs(minuteLeft);
-    if (abs > 4320) {
-      // overdue by more than 3 days — stop the timer
-      overdueElem.textContent = "Long overdue";
-      return true;
-    } else if (abs >= 60) {
-      const hours = Math.round(abs / 60);
-      overdueElem.textContent = `Overdue ${hours} hour${hours > 1 ? "s" : ""}`;
-    } else {
-      const mins = Math.round(abs);
-      overdueElem.textContent = `Overdue ${mins} min${mins > 1 ? "s" : ""}`;
-    }
-  } else if (minuteLeft <= 5) {
-    timeLeftElem.textContent = "Due now";
-  } else if (minuteLeft <= 30) {
-    const mins = Math.round(minuteLeft);
-    timeLeftElem.textContent = `Due in ${mins} mins`;
-  } else if (minuteLeft <= 60) {
-    timeLeftElem.textContent = "Due soon";
-  } else if (minuteLeft <= 1440) {
-    timeLeftElem.textContent = "Today";
-  } else if (minuteLeft <= 2880) {
-    timeLeftElem.textContent = "Tomorrow";
+    overdueElem.textContent = label;
   } else {
-    timeLeftElem.textContent = `${Math.round(minuteLeft / 1440)} days left`;
+    timeLeftElem.classList.remove("isHidden");
+    overdueElem.classList.remove("isActive");
+    timeLeftElem.textContent = label;
   }
 }
 
 let timerId;
 export function startDueLabelUpdate() {
-  if (timerId !== undefined) return;
+  if (timerId) return;
 
   timerId = setInterval(() => {
-    if (getDueLabel()) {
-      clearInterval(timerId);
-      timerId = undefined;
+    const result = getDueLabel(dueTime);
+    renderDueLabel(result);
+
+    if (result.isExpired) {
+      stopDueLabelUpdate();
     }
   }, 60000);
 }
