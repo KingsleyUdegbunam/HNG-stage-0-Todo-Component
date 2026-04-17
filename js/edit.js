@@ -1,4 +1,4 @@
-import { toDateTimeLocal } from "./time.js";
+import { setDeadLine, startDueLabelUpdate, toDateTimeLocal } from "./time.js";
 import { enhancePriority, toggleDescCollapse } from "./todo.js";
 import { showViewMode } from "./uiState.js";
 
@@ -26,6 +26,8 @@ export function handleFormSubmission(onSave) {
     showViewMode();
     enhancePriority();
     toggleDescCollapse();
+    setDeadLine(todo.dueDate);
+    startDueLabelUpdate();
   });
 }
 
