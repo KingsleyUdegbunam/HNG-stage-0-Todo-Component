@@ -38,7 +38,7 @@ export function getDueLabel() {
       overdueElem.textContent = `Overdue ${hours} hour${hours > 1 ? "s" : ""}`;
     } else {
       const mins = Math.round(abs);
-      timeLeftElem.textContent = `Overdue ${mins} min${mins > 1 ? "s" : ""}`;
+      overdueElem.textContent = `Overdue ${mins} min${mins > 1 ? "s" : ""}`;
     }
   } else if (minuteLeft <= 5) {
     timeLeftElem.textContent = "Due now";
