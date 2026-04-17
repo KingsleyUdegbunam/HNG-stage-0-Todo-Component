@@ -4,7 +4,7 @@ import { showViewMode } from "./uiState.js";
 
 const form = document.querySelector(".edit-container");
 const cancelBtn = document.querySelector(".edit-btn--cancel");
-const editlBtn = document.querySelector(".edit-todo");
+const editBtn = document.querySelector(".edit-todo");
 
 export function handleFormSubmission(onSave) {
   form.addEventListener("submit", (e) => {
@@ -24,6 +24,7 @@ export function handleFormSubmission(onSave) {
     //
 
     showViewMode();
+    editBtn.focus();
     enhancePriority();
     toggleDescCollapse();
     setDeadLine(todo.dueDate);
@@ -33,7 +34,7 @@ export function handleFormSubmission(onSave) {
 
 cancelBtn.addEventListener("click", () => {
   showViewMode();
-  editlBtn.focus();
+  editBtn.focus();
   toggleDescCollapse();
 });
 
