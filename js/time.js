@@ -85,15 +85,9 @@ let timerId;
 export function startDueLabelUpdate() {
   if (timerId || !dueTime) return;
 
-  const result = getDueLabel(dueTime);
-  renderDueLabel(result);
-
-  if (result.isExpired) {
-    return;
-  }
-
   timerId = setInterval(() => {
     console.log("Timer started");
+    const result = getDueLabel(dueTime);
     renderDueLabel(result);
 
     if (result.isExpired) {
@@ -102,11 +96,25 @@ export function startDueLabelUpdate() {
   }, 30000);
 }
 
+export function updateDueLabelOnce() {
+  if (!dueTime) return;
+  const result = getDueLabel(dueTime);
+  renderDueLabel(result);
+
+  console.log("started");
+}
+
 export function stopDueLabelUpdate() {
   if (timerId !== undefined) {
     clearInterval(timerId);
     timerId = undefined;
   }
+}
+
+export function restartDueLabelSystem() {
+  stopDueLabelUpdate();
+  updateDueLabelOnce();
+  startDueLabelUpdate();
 }
 
 export function toDateTimeLocal(isoDate) {
