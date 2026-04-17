@@ -21,7 +21,8 @@
           <div data-testid="test-todo-collapsible-section" class="collapsible-container">
 
             <p class="todo-desc" data-testid="test-todo-description">Extend stage 0 Todo card.</p>
-            <button data-testid="test-todo-expand-toggle" class="expand-toggle">
+            <button data-testid="test-todo-expand-toggle" aria-expanded="false" aria-controls="todo-desc"
+              class="expand-toggle">
               Read more
             </button>
           </div>
@@ -37,6 +38,7 @@
             <div class="time-status">
               <time class="due-date" data-testid="test-todo-due-date" datetime="2026-04-16T23:59:00Z">Loading...
               </time>
+
               <time aria-live="polite" class="remaining-time" data-testid="test-todo-time-remaining">Loading...</time>
               <time aria-live="polite" class="overdue-time" data-testid="test-todo-overdue-indicator">Loading...</time>
             </div>
