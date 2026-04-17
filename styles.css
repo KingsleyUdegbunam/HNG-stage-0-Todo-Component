@@ -490,6 +490,50 @@ legend {
   background-color: var(--completed-clr);
 }
 
+.collapsible-container {
+  padding-block: 0.25rem;
+}
+
+.collapsible-container .todo-desc {
+  height: 3rem;
+  overflow: hidden;
+
+  transition: height 0.3s ease;
+}
+
+.collapsible-container.expanded .todo-desc {
+  height: auto;
+}
+
+.expand-toggle {
+  display: none;
+  border: none;
+
+  font-weight: 600;
+  margin-top: 0.5rem;
+
+  font-size: 0.9rem;
+  background-color: transparent;
+  color: #232323;
+  border-inline-start: 2px solid #232323;
+
+  transition: padding 300ms;
+  cursor: pointer;
+}
+
+.expand-toggle:hover {
+  border-inline-start-width: 3px;
+}
+
+.expand-toggle:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.isVisible {
+  display: inline-flex;
+}
+
 /* MEDIA QUERIES */
 @media screen and (min-width: 480px) {
   .todo-title {

@@ -150,9 +150,37 @@ export function handleButtonClick(e) {
   if (button.classList.contains("edit-todo")) {
     console.log("edit clicked");
     showEditMode();
+    resetToggle();
     fillEditForm(initializeEdit());
   } else if (button.classList.contains("delete-todo")) {
     stopDueLabelUpdate();
     alert("Delete clicked");
   }
 }
+
+const container = document.querySelector(".collapsible-container");
+const text = document.querySelector(".todo-desc");
+const btn = document.querySelector(".expand-toggle");
+
+btn.addEventListener("click", () => {
+  const isExpanded = container.classList.toggle("expanded");
+  btn.textContent = isExpanded ? "Read less" : "Read more";
+});
+
+export function toggleDescCollapse() {
+  const containerHeight = container.clientHeight;
+  const textHeight = text.scrollHeight;
+  console.log(containerHeight, textHeight);
+
+  if (textHeight > containerHeight) {
+    btn.classList.add("isVisible");
+  }
+}
+
+export function resetToggle() {
+  container.classList.remove("expanded");
+  btn.classList.remove("isVisible");
+  console.log("reset");
+}
+
+toggleDescCollapse();
